@@ -34,6 +34,7 @@ export async function getArtifacts(
         id: projectId + generatedTag + element.push_time,
         projectID: projectId,
         tag: generatedTag,
+        tagDigest: element.digest,
         size: Math.round((element.size / 1028 / 1028) * 100) / 100,
         repoUrl: `${baseUrl}/harbor/projects/${projectId}/repositories/${encodeURIComponent(
           repository
@@ -120,6 +121,7 @@ interface Artifact {
   repoUrl: string
   vulnerabilities: Vulnerabilities
   id: string
+  tagDigest: string
 }
 
 interface HarborApiArtifact {
@@ -134,6 +136,7 @@ interface HarborApiArtifact {
   push_time: string
   project_id: number
   scan_overview: ScanOverview
+  digest: string
 }
 
 export type ScanMimeType = keyof ScanOverviewItemsMap
