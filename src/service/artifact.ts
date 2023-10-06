@@ -58,7 +58,7 @@ export async function getArtifacts(
       if ("scan_overview" in element && Object.keys(element.scan_overview).length > 0) {
         const mimeType = Object.keys(element.scan_overview)[0]
         if (
-          mimeType ==
+          mimeType ===
           'application/vnd.security.vulnerability.report; version=1.1'
         ) {
           const scanOverview = element.scan_overview[mimeType]
@@ -74,7 +74,7 @@ export async function getArtifacts(
             none: scanOverview.summary.total - Critical - High - Medium - Low,
           }
         } else if (
-          mimeType ==
+          mimeType ===
           'application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0'
         ) {
           const scanOverview = element.scan_overview[mimeType]
